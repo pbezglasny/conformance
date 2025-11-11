@@ -10,7 +10,11 @@ import {
   printServerSummary,
   runInteractiveMode
 } from './runner';
-import { listScenarios, listClientScenarios } from './scenarios';
+import {
+  listScenarios,
+  listClientScenarios,
+  listActiveClientScenarios
+} from './scenarios';
 import { ConformanceCheck } from './types';
 import { ClientOptionsSchema, ServerOptionsSchema } from './schemas';
 import packageJson from '../package.json';
@@ -97,8 +101,8 @@ program
         const { failed } = printServerResults(result.checks);
         process.exit(failed > 0 ? 1 : 0);
       } else {
-        // Run all scenarios
-        const scenarios = listClientScenarios();
+        // Run all active scenarios
+        const scenarios = listActiveClientScenarios();
         console.log(
           `Running ${scenarios.length} scenarios against ${validated.url}\n`
         );
