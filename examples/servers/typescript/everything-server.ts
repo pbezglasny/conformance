@@ -54,7 +54,8 @@ function createMcpServer() {
           listChanged: true
         },
         logging: {},
-        completions: {}
+        completions: {},
+        elicitation: {}
       }
     }
   );
@@ -369,9 +370,7 @@ function createMcpServer() {
               }
             }
           },
-          z
-            .object({ method: z.literal('elicitation/create') })
-            .passthrough() as any
+          z.any() as any
         );
 
         const elicitResult = result as any;
@@ -445,9 +444,7 @@ function createMcpServer() {
               }
             }
           },
-          z
-            .object({ method: z.literal('elicitation/create') })
-            .passthrough() as any
+          z.any() as any
         );
 
         const elicitResult = result as any;
@@ -544,9 +541,7 @@ function createMcpServer() {
               }
             }
           },
-          z
-            .object({ method: z.literal('elicitation/create') })
-            .passthrough() as any
+          z.any() as any
         );
 
         const elicitResult = result as any;
